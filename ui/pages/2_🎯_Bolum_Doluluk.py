@@ -627,3 +627,14 @@ with tab4:
         st.warning("Analiz edilecek bölüm verisi bulunamadı.")
 st.markdown("---")
 st.caption("💡 Bu analizler bölüm bazlı toplu veriler üzerinden hesaplanmıştır. Filtreleri kullanarak daha spesifik analizler yapabilirsiniz.")
+
+# Footer
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <div style='text-align: center; color: #666; font-size: 14px; padding: 20px 0;'>
+        UniMonkey v1.0.0+1 | <a href='https://ucyworks.com' target='_blank' style='color: #0066cc; text-decoration: none;'>ucyworks.com</a> tarafından geliştirilmiştir.
+    </div>
+    """, 
+    unsafe_allow_html=True
+)

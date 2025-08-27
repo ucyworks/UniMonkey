@@ -171,47 +171,6 @@ with tab1:
                 title="Burslu vs Ücretli Programlarda Ortalama Doluluk"
             )
             st.plotly_chart(fig, use_container_width=True)
-            
-            # En boş burslu programlar
-            st.subheader("En Boş Kalan Burslu Programlar")
-            
-            if not burslu_programs.empty:
-                en_bos_burslu = burslu_programs.nsmallest(15, 'Doluluk_Orani')
-                
-                if not en_bos_burslu.empty:
-                    fig = px.bar(
-                        en_bos_burslu.head(10),
-                        y='Program Adı',
-                        x='Doluluk_Orani',
-                        color='Burs_Kategorisi',
-                        title="En Boş 10 Burslu Program",
-                        orientation='h',
-                        labels={
-                            'Program Adı': 'Program Adı',
-                            'Doluluk_Orani': '% Doluluk Oranı',
-                            'Burs_Kategorisi': 'Burs Kategorisi'
-                        },
-                        hover_data=['Üniversite Adı', 'İl', 'Kontenjan', 'Yerleşen']
-                    )
-                    fig.update_xaxes(title="% Doluluk Oranı", ticksuffix="%")
-                    fig.update_yaxes(title="Program Adı")
-                    st.plotly_chart(fig, use_container_width=True)
-                    st.caption("📊 Bu grafik en boş 10 burslu programı gösterir. Çubuk uzunluğu doluluk oranını, renk ise burs kategorisini temsil eder.")
-                    
-                    # Özet bilgiler
-                    col_b1, col_b2, col_b3 = st.columns(3)
-                    with col_b1:
-                        st.metric("Toplam Burslu Program", len(burslu_programs))
-                    with col_b2:
-                        ortalama_burslu_doluluk = burslu_programs['Doluluk_Orani'].mean()
-                        st.metric("Ortalama Doluluk", f"{ortalama_burslu_doluluk:.1f}%")
-                    with col_b3:
-                        en_bos_burslu_doluluk = en_bos_burslu['Doluluk_Orani'].min()
-                        st.metric("En Boş Program Doluluk", f"{en_bos_burslu_doluluk:.1f}%")
-                else:
-                    st.info("Filtrelere uygun burslu program bulunamadı.")
-            else:
-                st.warning("Seçilen kriterlere uygun burslu program bulunamadı. Filtreleri değiştirerek tekrar deneyin.")
 
 with tab2:
     st.header("Vakıf Üniversiteleri Detaylı Analizi")
@@ -408,3 +367,14 @@ with tab4:
 
 st.markdown("---")
 st.caption("🏢 Bu analizler vakıf üniversiteleri ve burslu programlar odaklıdır.")
+
+# Footer
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <div style='text-align: center; color: #666; font-size: 14px; padding: 20px 0;'>
+        UniMonkey v1.0.0+1 | <a href='https://ucyworks.com' target='_blank' style='color: #0066cc; text-decoration: none;'>ucyworks.com</a> tarafından geliştirilmiştir.
+    </div>
+    """, 
+    unsafe_allow_html=True
+)

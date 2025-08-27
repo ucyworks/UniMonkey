@@ -93,7 +93,7 @@ if 'Fakülte/Yüksekokul Adı' in df.columns:
         df = df[df['Fakülte/Yüksekokul Adı'] == secili_fakulte]
 
 # Kontenjan aralığı filtresi
-min_kontenjan = st.sidebar.number_input("Minimum Kontenjan", min_value=0, value=0, step=50)
+min_kontenjan = st.sidebar.number_input("Minimum Kontenjan", min_value=0, value=10, step=50)
 df = df[pd.to_numeric(df['Kontenjan'], errors='coerce') >= min_kontenjan]
 
 # Doluluk oranı filtresi
@@ -466,3 +466,14 @@ with tab5:
 
 st.markdown("---")
 st.caption("🔍 Bu sayfa fakülte ve bölüm bazlı derinlemesine analizler sunmaktadır.")
+
+# Footer
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <div style='text-align: center; color: #666; font-size: 14px; padding: 20px 0;'>
+        UniMonkey v1.0.0+1 | <a href='https://ucyworks.com' target='_blank' style='color: #0066cc; text-decoration: none;'>ucyworks.com</a> tarafından geliştirilmiştir.
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
