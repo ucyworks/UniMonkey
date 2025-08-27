@@ -9,8 +9,14 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.data_loader import load_processed  # noqa: E402
-from src import config  # noqa: E402
+# Import with error handling for Streamlit Cloud
+try:
+    from src.data_loader import load_processed  # noqa: E402
+    from src import config  # noqa: E402
+except ImportError as e:
+    st.error(f"Import hatası: {e}")
+    st.error("Lütfen veri dosyalarının doğru konumda olduğundan emin olun.")
+    st.stop()
 
 st.set_page_config(
     page_title="YKS Yerleştirme Analizi", 
