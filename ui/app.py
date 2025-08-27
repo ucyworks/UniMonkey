@@ -13,37 +13,21 @@ from src.data_loader import load_processed  # noqa: E402
 from src import config  # noqa: E402
 
 st.set_page_config(
-    page_title="UniMonkey - YKS Yerleştirme Analizi", 
-    page_icon="🐒",
+    page_title="YAP (Yerleştirme Analizi Platformu) v1.0.0+1", 
+    page_icon="📊",
     layout="wide",
-    menu_items={
-        'Get Help': 'https://github.com/UniMonkey',
-        'Report a bug': "https://github.com/UniMonkey/issues",
-        'About': "# UniMonkey 🐒\nYKS Yerleştirme Analiz Platformu"
-    }
+    initial_sidebar_state="expanded"
 )
 
-# CSS ile hover efektleri ve logo
+st.set_page_config(
+    page_title="YKS Yerleştirme Analizi", 
+    page_icon="�",
+    layout="wide"
+)
+
+# CSS ile hover efektleri
 st.markdown("""
 <style>
-/* Sidebar logo ekleme */
-.css-1d391kg {
-    padding-top: 1rem;
-}
-
-/* Logo için stil */
-.sidebar-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-    padding: 10px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-}
-
 /* Multiselect ve selectbox hover efektleri */
 .stMultiSelect > div > div > div {
     cursor: pointer;
@@ -77,7 +61,7 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.title("🐒 UniMonkey - YKS Yerleştirme Analiz Platformu")
+st.title("YKS Yerleştirme Analiz Platformu")
 
 @st.cache_data(show_spinner=True)
 def get_data() -> pd.DataFrame:
