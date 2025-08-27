@@ -13,16 +13,10 @@ from src.data_loader import load_processed  # noqa: E402
 from src import config  # noqa: E402
 
 st.set_page_config(
-    page_title="YAP (Yerleştirme Analizi Platformu) v1.0.0+1", 
+    page_title="YKS Yerleştirme Analizi", 
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
-)
-
-st.set_page_config(
-    page_title="YKS Yerleştirme Analizi", 
-    page_icon="�",
-    layout="wide"
 )
 
 # CSS ile hover efektleri
